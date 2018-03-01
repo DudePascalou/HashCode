@@ -26,10 +26,11 @@ namespace HashCode
 
         public void Solve()
         {
-
+            // TEST
             Vehicles.First().Rides.Add(new Ride() { Id = 0 });
             Vehicles.Skip(1).First().Rides.Add(new Ride() { Id = 2 });
             Vehicles.Skip(1).First().Rides.Add(new Ride() { Id = 1 });
+            //
 
             // Output
             foreach (var vehicle in Vehicles)
@@ -48,6 +49,15 @@ namespace HashCode
             var result = 0d;
             result = Math.Sqrt(Math.Pow(Math.Abs(departure.X - arrival.X), 2) + Math.Pow(Math.Abs(departure.Y - arrival.Y), 2));
             return (int)Math.Ceiling(result);
+        }
+      
+        public void FindTheBestNextRide()
+        {
+            // Critère pour déterminer la meilleure course :
+            // - la distance actuelle de la voiture par rapport à la position de départ de la course
+            // -
+
+
         }
 
     }

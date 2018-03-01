@@ -15,6 +15,8 @@ namespace HashCode
         public Point StartingPoint { get; set; }
         public Point FinishingPoint { get; set; }
 
+        public bool IsUsed { get; set; }
+
         public void InitPosition()
         {
             StartingPoint = new Point(StartingRow, StartingColumn);

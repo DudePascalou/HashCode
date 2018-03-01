@@ -11,6 +11,7 @@ namespace HashCode
         public int Id { get; set; }
         public int Column { get; set; }
         public int Row { get; set; }
+        public bool IsDoingARide { get; set; }
 
         // Les rides sont dans l'ordre dans lequel elles ont été effectuées
         public ICollection<Ride> Rides {get; set;}
