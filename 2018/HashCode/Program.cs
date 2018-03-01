@@ -9,6 +9,8 @@ namespace HashCode
     {
         private const string path = @"C:\Users\fdescaves.stage\Source\Repos\HashCode\2018\HashCode\Input\";
 
+
+
         public static void Main(string[] args)
         {
             //
