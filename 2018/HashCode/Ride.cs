@@ -8,6 +8,8 @@
         public int FinishingColumn { get; set; }
         public int EarliestStart { get; set; }
         public int LatestFinish { get; set; }
+        
+
 
         public override string ToString()
         {
@@ -22,5 +24,7 @@
                 LatestFinish
             );
         }
+
+     
     }
 }
