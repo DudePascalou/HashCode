@@ -24,9 +24,8 @@ namespace HashCode
             Vehicles = new List<Vehicle>();
         }
 
-        public void Solve()
+        public IEnumerable<string> Solve()
         {
-
             Vehicles.First().Rides.Add(new Ride() { Id = 0 });
             Vehicles.Skip(1).First().Rides.Add(new Ride() { Id = 2 });
             Vehicles.Skip(1).First().Rides.Add(new Ride() { Id = 1 });
@@ -34,12 +33,12 @@ namespace HashCode
             // Output
             foreach (var vehicle in Vehicles)
             {
-                Console.Write($"{vehicle.Rides.Count}");
+                var res = $"{vehicle.Rides.Count}";
                 foreach (var ride in vehicle.Rides)
                 {
-                    Console.Write($" {ride.Id}");
+                    res += $" {ride.Id}";
                 }
-                Console.Write(Environment.NewLine);
+                yield return res;
             }
         }
 
