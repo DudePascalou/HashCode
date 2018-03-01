@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoperAlgoLib.Geometry;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -25,6 +26,13 @@ namespace HashCode
         {
             
         }
-        
+
+        public static int CalculMove(Point departure, Point arrival)
+        {
+            var result = 0d;
+            result = Math.Sqrt(Math.Pow(Math.Abs(departure.X - arrival.X), 2) + Math.Pow(Math.Abs(departure.Y - arrival.Y), 2));
+            return (int)Math.Ceiling(result);
+        }
+
     }
 }
