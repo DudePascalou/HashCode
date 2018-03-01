@@ -37,19 +37,27 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Input.cs" />
     <Compile Include="Practice\PizzaSolver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ride.cs" />
     <Compile Include="Solver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Execute.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Input\a_example.in" />
+    <None Include="Input\b_should_be_easy.in" />
+    <None Include="Input\c_no_hurry.in" />
+    <None Include="Input\d_metropolis.in" />
+    <None Include="Input\e_high_bonus.in" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Input\" />
     <Folder Include="Output\" />
   </ItemGroup>
   <ItemGroup>

@@ -13,6 +13,7 @@ namespace HashCode
 
         public static void Main(string[] args)
         {
+            //
             var input = new List<string>();
             //using (var j = File.OpenText(path + "file1.in"))
             //using (var j = File.OpenText(path + "file2.in"))
