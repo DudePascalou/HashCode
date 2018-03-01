@@ -14,11 +14,11 @@ namespace HashCode
         public int RidesCount { get; set; }
         public int Bonus { get; set; }
         public int Steps { get; set; }
-        public int[][] DistancesRides;
+        public double[][] DistancesRides;
 
 
-        public ICollection<Vehicle> Vehicles { get; set; }
-        public ICollection<Ride> Rides { get; set; }
+        public List<Vehicle> Vehicles { get; set; }
+        public List<Ride> Rides { get; set; }
 
         public Solver()
         {
@@ -44,12 +44,22 @@ namespace HashCode
                 Console.Write(Environment.NewLine);
             }
         }
-        public static double Distance(double x1, double y1, double x2, double y2)
+        public static double Distance(int x1, int y1, int x2, int y2)
         {
             return Math.Sqrt(((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)));
         }
 
+
         public int CalculMove(Point departure, Point arrival)
+        {
+            var result = 0d;
+            result = Math.Sqrt(Math.Pow(Math.Abs(departure.X - arrival.X), 2) + Math.Pow(Math.Abs(departure.Y - arrival.Y), 2));
+            return (int)Math.Ceiling(result);
+        }
+
+
+
+        public void MatriceDistanceCourses()
         {
             for (int i = 0; i < RidesCount; i++)
             {
@@ -57,16 +67,20 @@ namespace HashCode
                 {
                     if (i != j)
                     {
-                        DistancesRides[i][j]= Distance()
+
+                        DistancesRides[i][j] = Distance(Rides[i].FinishingPoint.X, Rides[j].StartingPoint.X, Rides[i].FinishingPoint.Y, Rides[j].FinishingPoint.Y);
+                        DistancesRides[i][j] = Distance(Rides[i].FinishingPoint.X, Rides[j].StartingPoint.X, Rides[i].FinishingPoint.Y, Rides[j].FinishingPoint.Y);
+                    }
+                    else
+                    {
+                        DistancesRides[i][j] = 0;
                     }
                 }
             }
 
 
 
-            var result = 0d;
-            result = Math.Sqrt(Math.Pow(Math.Abs(departure.X - arrival.X), 2) + Math.Pow(Math.Abs(departure.Y - arrival.Y), 2));
-            return (int)Math.Ceiling(result);
+
         }
 
     }
