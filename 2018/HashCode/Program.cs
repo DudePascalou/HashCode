@@ -28,6 +28,7 @@ namespace HashCode
             //solver.Dummy();
             solver.Solve();
             Console.Error.WriteLine("Traitement terminé. À soumettre viiiite !!!");
+            Console.Read();
         }
 
         public static Solver ParseInput(IList<string> input)
@@ -53,21 +54,34 @@ namespace HashCode
             int inputRowNumber = 0;
             input[inputRowNumber].FirstIs<int>(i => solver.Rows = i);
             input[inputRowNumber].SecondIs<int>(i => solver.Columns = i);
-            input[inputRowNumber].ThirdIs<int>(i => solver.Vehicles = i);
+            input[inputRowNumber].ThirdIs<int>(i => solver.VehiclesCount = i);
             input[inputRowNumber].FourthIs<int>(i => solver.RidesCount = i);
             input[inputRowNumber].FifthIs<int>(i => solver.Bonus = i);
             input[inputRowNumber].SixthIs<int>(i => solver.Steps = i);
             inputRowNumber++;
 
+            for (int i = 0; i < solver.VehiclesCount; i++)
+            {
+                var vehicle = new Vehicle
+                {
+                    Id = i
+                };
+                solver.Vehicles.Add(vehicle);
+            }
+
             for (int index = 0; index < solver.RidesCount; index++)
             {
                 var ride = new Ride();
+                ride.Id = index;
                 input[inputRowNumber].FirstIs<int>(startingRow => ride.StartingRow = startingRow);
                 input[inputRowNumber].SecondIs<int>(startingColumn => ride.StartingColumn = startingColumn);
                 input[inputRowNumber].ThirdIs<int>(finishingRow => ride.FinishingRow = finishingRow);
                 input[inputRowNumber].FourthIs<int>(finishingColumn => ride.FinishingColumn = finishingColumn);
                 input[inputRowNumber].FifthIs<int>(earliestStart => ride.EarliestStart = earliestStart);
                 input[inputRowNumber].SixthIs<int>(latestFinish => ride.LatestFinish = latestFinish);
+
+                ride.InitPosition();
+
                 solver.Rides.Add(ride);
                 inputRowNumber++;
             }

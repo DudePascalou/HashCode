@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace HashCode
 {
-    class Vehicle
+    public class Vehicle
     {
-        public int column;
-        public int row;
+        public int Id { get; set; }
+        public int Column { get; set; }
+        public int Row { get; set; }
+
+        // Les rides sont dans l'ordre dans lequel elles ont été effectuées
+        public ICollection<Ride> Rides {get; set;}
+
+        public Vehicle()
+        {
+            Rides = new List<Ride>();
+        }
     }
 }
