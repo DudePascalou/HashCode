@@ -7,7 +7,7 @@ namespace HashCode
 {
     public class Program
     {
-        private const string path = @"C:\Users\PC\Documents\GitHub\HashCode\2018\HashCode\Input\";
+        private const string path = @"C:\Users\fdescaves.stage\Source\Repos\HashCode\2018\HashCode\Input\";
 
         public static void Main(string[] args)
         {
@@ -17,7 +17,7 @@ namespace HashCode
             //using (var j = File.OpenText(path + "file2.in"))
             //using (var j = File.OpenText(path + "file3.in"))
             //using (var j = File.OpenText(path + "file4.in"))
-            using (var j = File.OpenText(path + "test.in"))
+            using (var j = File.OpenText(path + "a_example.in"))
             {
                 while (!j.EndOfStream)
                     input.Add(j.ReadLine());
@@ -32,9 +32,9 @@ namespace HashCode
         {
             var solver = new Solver();
 
-            // TODO : parse input
-
-            // Examples :
+            ///////////////////////////////////
+            // Examples de parsing d'input
+            ///////////////////////////////////
             //input[inputRowNumber].FirstIs<int>(i => solver.VideosCount = i);
             //input[inputRowNumber].SecondIs<int>(i => solver.EndpointsCount = i);
             //inputRowNumber++;
@@ -46,7 +46,29 @@ namespace HashCode
 
             //    solver.Videos.Add(video);
             //}
+            ///////////////////////////////////
 
+            int inputRowNumber = 0;
+            input[inputRowNumber].FirstIs<int>(i => solver.Rows = i);
+            input[inputRowNumber].SecondIs<int>(i => solver.Columns = i);
+            input[inputRowNumber].ThirdIs<int>(i => solver.Vehicles = i);
+            input[inputRowNumber].FourthIs<int>(i => solver.RidesCount = i);
+            input[inputRowNumber].FifthIs<int>(i => solver.Bonus = i);
+            input[inputRowNumber].SixthIs<int>(i => solver.Steps = i);
+            inputRowNumber++;
+
+            for (int index = 0; index < solver.RidesCount; index++)
+            {
+                var ride = new Ride();
+                input[inputRowNumber].FirstIs<int>(startingRow => ride.StartingRow = startingRow);
+                input[inputRowNumber].SecondIs<int>(startingColumn => ride.StartingColumn = startingColumn);
+                input[inputRowNumber].ThirdIs<int>(finishingRow => ride.FinishingRow = finishingRow);
+                input[inputRowNumber].FourthIs<int>(finishingColumn => ride.FinishingColumn = finishingColumn);
+                input[inputRowNumber].FifthIs<int>(earliestStart => ride.EarliestStart = earliestStart);
+                input[inputRowNumber].SixthIs<int>(latestFinish => ride.LatestFinish = latestFinish);
+                solver.Rides.Add(ride);
+                inputRowNumber++;
+            }
             return solver;
         }
     }
