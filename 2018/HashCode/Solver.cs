@@ -14,9 +14,11 @@ namespace HashCode
         public int RidesCount { get; set; }
         public int Bonus { get; set; }
         public int Steps { get; set; }
+        public double[][] DistancesRides;
 
-        public ICollection<Vehicle> Vehicles { get; set; }
-        public ICollection<Ride> Rides { get; set; }
+
+        public List<Vehicle> Vehicles { get; set; }
+        public List<Ride> Rides { get; set; }
 
         public Solver()
         {
@@ -24,7 +26,7 @@ namespace HashCode
             Vehicles = new List<Vehicle>();
         }
 
-        public void Solve()
+        public IEnumerable<string> Solve()
         {
             // TEST
             Vehicles.First().Rides.Add(new Ride() { Id = 0 });
@@ -35,27 +37,49 @@ namespace HashCode
             // Output
             foreach (var vehicle in Vehicles)
             {
-                Console.Write($"{vehicle.Rides.Count}");
+                var res = $"{vehicle.Rides.Count}";
                 foreach (var ride in vehicle.Rides)
                 {
-                    Console.Write($" {ride.Id}");
+                    res += $" {ride.Id}";
                 }
-                Console.Write(Environment.NewLine);
+                yield return res;
             }
         }
+        public static double Distance(int x1, int y1, int x2, int y2)
+        {
+            return Math.Sqrt(((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)));
+        }
 
-        public static int CalculMove(Point departure, Point arrival)
+
+        public int CalculMove(Point departure, Point arrival)
         {
             var result = 0d;
             result = Math.Sqrt(Math.Pow(Math.Abs(departure.X - arrival.X), 2) + Math.Pow(Math.Abs(departure.Y - arrival.Y), 2));
             return (int)Math.Ceiling(result);
         }
-      
-        public void FindTheBestNextRide()
+
+
+
+        public void MatriceDistanceCourses()
         {
-            // Critère pour déterminer la meilleure course :
-            // - la distance actuelle de la voiture par rapport à la position de départ de la course
-            // -
+            for (int i = 0; i < RidesCount; i++)
+            {
+                for (int j =0;j<RidesCount;j++)
+                {
+                    if (i != j)
+                    {
+
+                        DistancesRides[i][j] = Distance(Rides[i].FinishingPoint.X, Rides[j].StartingPoint.X, Rides[i].FinishingPoint.Y, Rides[j].FinishingPoint.Y);
+                        DistancesRides[i][j] = Distance(Rides[i].FinishingPoint.X, Rides[j].StartingPoint.X, Rides[i].FinishingPoint.Y, Rides[j].FinishingPoint.Y);
+                    }
+                    else
+                    {
+                        DistancesRides[i][j] = 0;
+                    }
+                }
+            }
+
+
 
 
         }

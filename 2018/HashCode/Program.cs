@@ -7,24 +7,29 @@ namespace HashCode
 {
     public class Program
     {
-        private const string path = @"C:\Users\fdescaves.stage\Source\Repos\HashCode\2018\HashCode\Input\";
+        private const string path = @"D:\Development\HashCode\2018\HashCode\Input\";
+        private const string outputPath = @"D:\Development\HashCode\2018\HashCode\Output\";
+        private static string[] inputFiles =
+        {
+            "a_example.in",
+            "b_should_be_easy.in",
+            "c_no_hurry.in",
+            "d_metropolis.in",
+            "e_high_bonus.in"
+        };
 
         public static void Main(string[] args)
         {
-            //
-            var input = new List<string>();
-            //using (var j = File.OpenText(path + "file1.in"))
-            //using (var j = File.OpenText(path + "file2.in"))
-            //using (var j = File.OpenText(path + "file3.in"))
-            //using (var j = File.OpenText(path + "file4.in"))
-            using (var j = File.OpenText(path + "a_example.in"))
+            foreach (var inputFile in inputFiles)
             {
-                while (!j.EndOfStream)
-                    input.Add(j.ReadLine());
+                Console.WriteLine(inputFile);
+                var inputFilePath = Path.Combine(path, inputFile);
+                var outputFilePath = Path.Combine(outputPath, Path.ChangeExtension(inputFile, "out"));
+                var input = new List<string>();
+                var solver = ParseInput(File.ReadAllLines(inputFilePath));
+                var result = solver.Solve();
+                File.WriteAllLines(outputFilePath, result.ToArray());
             }
-            var solver = ParseInput(input);
-            //solver.Dummy();
-            solver.Solve();
             Console.Error.WriteLine("Traitement terminé. À soumettre viiiite !!!");
             Console.Read();
         }
@@ -32,23 +37,7 @@ namespace HashCode
         public static Solver ParseInput(IList<string> input)
         {
             var solver = new Solver();
-
-            ///////////////////////////////////
-            // Examples de parsing d'input
-            ///////////////////////////////////
-            //input[inputRowNumber].FirstIs<int>(i => solver.VideosCount = i);
-            //input[inputRowNumber].SecondIs<int>(i => solver.EndpointsCount = i);
-            //inputRowNumber++;
-            //for (int index = 0; index < solver.VideosCount; index++)
-            //{
-            //    var video = new Video();
-            //    video.VideoId = index;
-            //    input[inputRowNumber].NthIs<int>(index, size => video.Size = size);
-
-            //    solver.Videos.Add(video);
-            //}
-            ///////////////////////////////////
-
+            
             int inputRowNumber = 0;
             input[inputRowNumber].FirstIs<int>(i => solver.Rows = i);
             input[inputRowNumber].SecondIs<int>(i => solver.Columns = i);
