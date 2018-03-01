@@ -9,6 +9,8 @@ namespace HashCode
     {
         private const string path = @"C:\Users\PC\Documents\GitHub\HashCode\2018\HashCode\Input\";
 
+
+
         public static void Main(string[] args)
         {
             var input = new List<string>();
