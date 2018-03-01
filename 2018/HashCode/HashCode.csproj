@@ -51,9 +51,13 @@
     <None Include="Execute.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Input\a_example.in" />
+    <None Include="Input\b_should_be_easy.in" />
+    <None Include="Input\c_no_hurry.in" />
+    <None Include="Input\d_metropolis.in" />
+    <None Include="Input\e_high_bonus.in" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Input\" />
     <Folder Include="Output\" />
   </ItemGroup>
   <ItemGroup>
