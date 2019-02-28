@@ -61,7 +61,7 @@ namespace HashCode
                     input[inputRowNumber].NthIs<string>(tagIndex, tag => photo.Tags.Add(tag));
                 }
                 solver.Photos.Add(photo);
-                Console.WriteLine(photo);
+                //Console.WriteLine(photo);
                 inputRowNumber++;
             }
 
