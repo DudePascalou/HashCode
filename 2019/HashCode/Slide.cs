@@ -1,13 +1,16 @@
-﻿namespace HashCode
+﻿using System.Collections.Generic;
+
+namespace HashCode
 {
     public class Slide
     {
         public int PhotoId { get; set; }
 
         public int PhotoId2 { get; set; }
-
+        public IList<string> Tags { get; set; }
         public Slide()
         {
+            Tags = new List<string>();
             PhotoId = -1;
             PhotoId2 = -1;
         }
