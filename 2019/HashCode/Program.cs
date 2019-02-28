@@ -11,11 +11,11 @@ namespace HashCode
         private const string outputPath = @"C:\Users\sbeaulieu.stage\Desktop\hashcode\HashCode\2019\HashCode\Output\";
         private static string[] inputFiles =
         {
-            "a_example.in",
-            "b_should_be_easy.in",
-            "c_no_hurry.in",
-            "d_metropolis.in",
-            "e_high_bonus.in"
+            "a_example.txt",
+            "b_lovely_landscapes.txt",
+            "c_memorable_moments.txt",
+            "d_pet_pictures.txt",
+            "e_shiny_selfies.txt"
         };
 
         public static void Main(string[] args)

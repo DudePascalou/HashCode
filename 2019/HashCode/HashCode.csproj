@@ -53,7 +53,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Input\" />
     <Folder Include="Output\" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +60,13 @@
       <Project>{cfeb57e4-2118-467d-9ea7-0d8e6001febb}</Project>
       <Name>CoperAlgoLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Input\a_example.txt" />
+    <Content Include="Input\b_lovely_landscapes.txt" />
+    <Content Include="Input\c_memorable_moments.txt" />
+    <Content Include="Input\d_pet_pictures.txt" />
+    <Content Include="Input\e_shiny_selfies.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
