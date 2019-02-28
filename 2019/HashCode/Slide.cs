@@ -15,6 +15,13 @@ namespace HashCode
             PhotoId2 = -1;
         }
 
+        public Slide(Photo p)
+        {
+            Tags = p.Tags;
+            PhotoId = p.Id;
+            PhotoId2 = -1;
+        }
+
         public override string ToString()
         {
             return string.Format("{0}{1}", PhotoId, (PhotoId2 > -1) ? " " + PhotoId2.ToString() : string.Empty);
