@@ -21,15 +21,26 @@ namespace HashCode
 
         public IEnumerable<string> Solve()
         {
-
-            // TODO : construction du slideshow
-
+            foreach (var photo in Photos.Where(p => p.IsHorizontal))
+            {
+                var slide = new Slide
+                {
+                    PhotoId = photo.Id
+                };
+                Slideshow.Add(slide);
+            }
 
             yield return Slideshow.Count.ToString();
             foreach (var slide in Slideshow)
             {
                 yield return slide.ToString();
             }
+        }
+
+
+        private IList<string> MatchingTags(IList<string> tags1, IList<string> tags2)
+        {
+            return tags1.Intersect(tags2).ToList();
         }
 
     }
