@@ -48,6 +48,7 @@ namespace HashCode
                     Slideshow.Add(nextSlide);
                     SlideList.Remove(nextSlide);
                 }
+                //Console.WriteLine(SlideList.Count);
             }
 
             yield return Slideshow.Count.ToString();
