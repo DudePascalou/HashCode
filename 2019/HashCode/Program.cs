@@ -48,9 +48,11 @@ namespace HashCode
             input[inputRowNumber].FirstIs<int>(i => solver.PhotoCount = i);
             inputRowNumber++;
 
+            var photoId = 0;
             for (int i = 0; i < solver.PhotoCount; i++)
             {
                 var photo = new Photo();
+                photo.Id = photoId++;
                 input[inputRowNumber].FirstIs<char>(hv => photo.IsHorizontal = (hv == 'H'));
                 input[inputRowNumber].FirstIs<char>(hv => photo.IsVertical = (hv == 'V'));
                 input[inputRowNumber].SecondIs<int>(tagCount => photo.TagCount = tagCount);
