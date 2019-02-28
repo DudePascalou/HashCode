@@ -11,9 +11,14 @@ namespace HashCode
         public int FinishingColumn { get; set; }
         public int EarliestStart { get; set; }
         public int LatestFinish { get; set; }
-
+        
         public Point StartingPoint { get; set; }
         public Point FinishingPoint { get; set; }
+
+        public bool CanStart (int step)
+        {
+            return EarliestStart >= step;
+        }
 
         public void InitPosition()
         {
@@ -34,5 +39,7 @@ namespace HashCode
                 LatestFinish
             );
         }
+
+     
     }
 }

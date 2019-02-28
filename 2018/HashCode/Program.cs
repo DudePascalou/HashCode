@@ -7,8 +7,8 @@ namespace HashCode
 {
     public class Program
     {
-        private const string path = @"D:\Development\HashCode\2018\HashCode\Input\";
-        private const string outputPath = @"D:\Development\HashCode\2018\HashCode\Output\";
+        private const string path = @"C:\Users\fdescaves.stage\Source\Repos\HashCode\2018\HashCode\Input\";
+        private const string outputPath = @"C:\Users\fdescaves.stage\Source\Repos\HashCode\2018\HashCode\Output\";
         private static string[] inputFiles =
         {
             "a_example.in",
@@ -44,7 +44,7 @@ namespace HashCode
             input[inputRowNumber].ThirdIs<int>(i => solver.VehiclesCount = i);
             input[inputRowNumber].FourthIs<int>(i => solver.RidesCount = i);
             input[inputRowNumber].FifthIs<int>(i => solver.Bonus = i);
-            input[inputRowNumber].SixthIs<int>(i => solver.Steps = i);
+            input[inputRowNumber].SixthIs<int>(i => solver.TotalSteps = i);
             inputRowNumber++;
 
             for (int i = 0; i < solver.VehiclesCount; i++)
