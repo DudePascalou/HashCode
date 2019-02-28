@@ -7,8 +7,8 @@ namespace HashCode
 {
     public class Program
     {
-        private const string path = @"D:\Development\HashCode\2019\HashCode\Input\";
-        private const string outputPath = @"D:\Development\HashCode\2019\HashCode\Output\";
+        private const string path = @"C:\Users\sbeaulieu.stage\Desktop\hashcode\HashCode\2019\HashCode\Input\";
+        private const string outputPath = @"C:\Users\sbeaulieu.stage\Desktop\hashcode\HashCode\2019\HashCode\Output\";
         private static string[] inputFiles =
         {
             "a_example.in",
