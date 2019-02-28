@@ -37,41 +37,31 @@ namespace HashCode
         public static Solver ParseInput(IList<string> input)
         {
             var solver = new Solver();
-            
-            //int inputRowNumber = 0;
-            //input[inputRowNumber].FirstIs<int>(i => solver.Rows = i);
-            //input[inputRowNumber].SecondIs<int>(i => solver.Columns = i);
-            //input[inputRowNumber].ThirdIs<int>(i => solver.VehiclesCount = i);
-            //input[inputRowNumber].FourthIs<int>(i => solver.RidesCount = i);
-            //input[inputRowNumber].FifthIs<int>(i => solver.Bonus = i);
-            //input[inputRowNumber].SixthIs<int>(i => solver.Steps = i);
-            //inputRowNumber++;
 
-            //for (int i = 0; i < solver.VehiclesCount; i++)
-            //{
-            //    var vehicle = new Vehicle
-            //    {
-            //        Id = i
-            //    };
-            //    solver.Vehicles.Add(vehicle);
-            //}
+            //4
+            //H 3 cat beach sun
+            //V 2 selfie smile
+            //V 2 garden selfie
+            //H 2 garden cat
 
-            //for (int index = 0; index < solver.RidesCount; index++)
-            //{
-            //    var ride = new Ride();
-            //    ride.Id = index;
-            //    input[inputRowNumber].FirstIs<int>(startingRow => ride.StartingRow = startingRow);
-            //    input[inputRowNumber].SecondIs<int>(startingColumn => ride.StartingColumn = startingColumn);
-            //    input[inputRowNumber].ThirdIs<int>(finishingRow => ride.FinishingRow = finishingRow);
-            //    input[inputRowNumber].FourthIs<int>(finishingColumn => ride.FinishingColumn = finishingColumn);
-            //    input[inputRowNumber].FifthIs<int>(earliestStart => ride.EarliestStart = earliestStart);
-            //    input[inputRowNumber].SixthIs<int>(latestFinish => ride.LatestFinish = latestFinish);
+            int inputRowNumber = 0;
+            input[inputRowNumber].FirstIs<int>(i => solver.PhotoCount = i);
+            inputRowNumber++;
 
-            //    ride.InitPosition();
-
-            //    solver.Rides.Add(ride);
-            //    inputRowNumber++;
-            //}
+            for (int i = 0; i < solver.PhotoCount; i++)
+            {
+                var photo = new Photo();
+                input[inputRowNumber].FirstIs<char>(hv => photo.IsHorizontal = (hv == 'H'));
+                input[inputRowNumber].FirstIs<char>(hv => photo.IsVertical = (hv == 'V'));
+                input[inputRowNumber].SecondIs<int>(tagCount => photo.TagCount = tagCount);
+                for (int tagIndex = 2; tagIndex < photo.TagCount + 2; tagIndex++)
+                {
+                    input[inputRowNumber].NthIs<string>(tagIndex, tag => photo.Tags.Add(tag));
+                }
+                solver.Photos.Add(photo);
+                Console.WriteLine(photo);
+                inputRowNumber++;
+            }
 
             return solver;
         }

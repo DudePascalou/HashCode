@@ -8,38 +8,28 @@ namespace HashCode
 {
     public partial class Solver
     {
-        //public int Rows { get; set; }
-        //public int Columns { get; set; }
-        //public int VehiclesCount { get; set; }
-        //public int RidesCount { get; set; }
-        //public int Bonus { get; set; }
-        //public int Steps { get; set; }
+        public int PhotoCount { get; set; }
+        public IList<Photo> Photos { get; set; }
+        public IList<Slide> Slideshow { get; set; }
 
-        //public ICollection<Vehicle> Vehicles { get; set; }
-        //public ICollection<Ride> Rides { get; set; }
 
         public Solver()
         {
-            //Rides = new List<Ride>();
-            //Vehicles = new List<Vehicle>();
+            Photos = new List<Photo>();
+            Slideshow = new List<Slide>();
         }
 
         public IEnumerable<string> Solve()
         {
-            //Vehicles.First().Rides.Add(new Ride() { Id = 0 });
-            //Vehicles.Skip(1).First().Rides.Add(new Ride() { Id = 2 });
-            //Vehicles.Skip(1).First().Rides.Add(new Ride() { Id = 1 });
 
-            //// Output
-            //foreach (var vehicle in Vehicles)
-            //{
-            //    var res = $"{vehicle.Rides.Count}";
-            //    foreach (var ride in vehicle.Rides)
-            //    {
-            //        res += $" {ride.Id}";
-            //    }
-            //    yield return res;
-            //}
+            // TODO : construction du slideshow
+
+
+            yield return Slideshow.Count.ToString();
+            foreach (var slide in Slideshow)
+            {
+                yield return slide.ToString();
+            }
         }
 
     }
